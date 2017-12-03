@@ -1,3 +1,5 @@
+// TODO: Adicionar um framework de teste
+
 console.log({ expected: 2, result: sum({ x: 1, y: 1 }) })
 console.log({ expected: 3, result: sum({ x: 2, y: 1 }) })
 
