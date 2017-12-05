@@ -1,7 +1,6 @@
 const sum = ({ x, y }) => x + y
 const isPairWithGivenSum = ({ pair, givenSum }) => sum(pair) === givenSum
-const getPairsWithGivenSum =
-    (pairs, givenSum) => pairs.filter(pair => isPairWithGivenSum({ pair, givenSum }))
+const getPairsWithGivenSum = (pairs, givenSum) => pairs.filter(pair => isPairWithGivenSum({ pair, givenSum }))
 
 // TODO: Colocar num arquivo de utilitários, talvez seja usado em outros lugares
 const arrayFromIndex = ({ array, index }) => array.slice(index);
@@ -24,4 +23,17 @@ const findPairsWithGivenSumArray = ({ givenSum, array }) => {
     const pairs = buildArrayOfPairs(array)
     const result = getPairsWithGivenSum(pairs, givenSum)
     return convertPairsToArray(result)
+}
+
+module.exports = { 
+	sum,
+	isPairWithGivenSum,
+	getPairsWithGivenSum,
+	arrayFromIndex,
+	joinTwoArrays,
+	arrayNotEmpty,
+	convertArrayToPairs,
+	convertPairsToArray,
+	buildArrayOfPairs,
+	findPairsWithGivenSumArray
 }

@@ -1,41 +1,32 @@
-// TODO: Adicionar um framework de teste
+const index = require('./index.js')
 
-console.log({ expected: 2, result: sum({ x: 1, y: 1 }) })
-console.log({ expected: 3, result: sum({ x: 2, y: 1 }) })
+it('sums two number', () => expect(index.sum({ x: 1, y: 1 })).toBe(2))
+it('sums two number', () => expect(index.sum({ x: 2, y: 1 })).toBe(3))
 
-console.log({ expected: true, result: isPairWithGivenSum({ pair: { x: 1, y: 1 }, givenSum: 2 }) })
-console.log({ expected: true, result: isPairWithGivenSum({ pair: { x: 1, y: 2 }, givenSum: 3 }) })
-console.log({ expected: true, result: isPairWithGivenSum({ pair: { x: 8, y: 2 }, givenSum: 10 }) })
+it('checks if a pair is with a given sum', () => expect(index.isPairWithGivenSum({ pair: { x: 1, y: 1 }, givenSum:  2 })).toBeTruthy())
+it('checks if a pair is with a given sum', () => expect(index.isPairWithGivenSum({ pair: { x: 1, y: 1 }, givenSum:  3 })).toBeFalsy())
+it('checks if a pair is with a given sum', () => expect(index.isPairWithGivenSum({ pair: { x: 8, y: 2 }, givenSum: 10 })).toBeTruthy())
 
-console.log({ result: getPairsWithGivenSum([{ x: 8, y: 2 }], 10), expected: [{ x: 8, y: 2 }] })
-console.log({ result: getPairsWithGivenSum([{ x: 5, y: 2 }, { x: 1, y: 2 }], 7), expected: [{ x: 5, y: 2 }] })
-console.log({ result: getPairsWithGivenSum([{ x: 0, y: 8 }, { x: 6, y: 2 }], 9), expected: [] })
+it('gets pairs with a given sum', ()=> expect(index.getPairsWithGivenSum([{ x: 5, y: 2 }, { x: 1, y: 2 }], 7)).toEqual([{ x: 5, y: 2 }]))
+it('gets pairs with a given sum', ()=> expect(index.getPairsWithGivenSum([{ x: 8, y: 2 }], 10)).toEqual([{ x: 8, y: 2 }]))
+it('gets pairs with a given sum', ()=> expect(index.getPairsWithGivenSum([{ x: 0, y: 8 }, { x: 6, y: 2 }], 9)).toEqual([]))
 
-console.log({ expected: [2, 3, 4], result: arrayFromIndex({ array: [1, 2, 3, 4], index: 1 }) })
-console.log({ expected: [3, 4], result: arrayFromIndex({ array: [1, 2, 3, 4], index: 2 }) })
+it('returns a new array from the index', ()=> expect(index.arrayFromIndex({ array: [1, 2, 3, 4], index: 1 })).toEqual([2, 3, 4]))
+it('returns a new array from the index', ()=> expect(index.arrayFromIndex({ array: [1, 2, 3, 4], index: 2 })).toEqual([3, 4]))
 
-console.log({ expected: [1, 2, 3, 4], result: joinTwoArrays([1, 2], [3, 4]) })
-console.log({ expected: [1, 2], result: joinTwoArrays([1], [2]) })
-console.log({ expected: [{ x: 1, y: 2 }, { x: 3, y: 4 }], result: joinTwoArrays([{ x: 1, y: 2 }], [{ x: 3, y: 4 }]) })
+it('joins two arrays', ()=> expect(index.joinTwoArrays([1, 2], [3, 4])).toEqual([1, 2, 3, 4]))
+it('joins two arrays', ()=> expect(index.joinTwoArrays([1], [2])).toEqual([1, 2]))
+it('joins two arrays', ()=> expect(index.joinTwoArrays([{ x: 1, y: 2 }], [{ x: 3, y: 4 }])).toEqual([{ x: 1, y: 2 }, { x: 3, y: 4 }]))
 
-console.log({ expected: false, result: arrayNotEmpty([]) })
-console.log({ expected: true, result: arrayNotEmpty([1]) })
+it('checks if a array is empty', ()=> expect(index.arrayNotEmpty([])).toBeFalsy())
+it('checks if a array is empty', ()=> expect(index.arrayNotEmpty([1])).toBeTruthy())
 
-console.log({ result: convertArrayToPairs(1, [2, 3]), expected: [{ x: 1, y: 2 }, { x: 1, y: 3 }] })
-console.log({ result: convertArrayToPairs(1, [2]), expected: [{ x: 1, y: 2 }] })
+it('converts a number and a array to a pair', ()=> expect(index.convertArrayToPairs(1, [2, 3])).toEqual([{ x: 1, y: 2 }, { x: 1, y: 3 }]))
+it('converts a number and a array to a pair', ()=> expect(index.convertArrayToPairs(1, [2])).toEqual([{ x: 1, y: 2 }]))
 
-console.log({
-    expected: [[1, 2], [3, 4]],
-    result: convertPairsToArray([{ x: 1, y: 2 }, { x: 3, y: 4 }])
-})
+it('converts a array of pairs into a array os arrays.', ()=> expect(index.convertPairsToArray([{ x: 1, y: 2 }, { x: 3, y: 4 }])).toEqual([[1, 2], [3, 4]]))
 
-console.log({ result: buildArrayOfPairs([1, 2, 3]), expected: [{ x: 1, y: 2 }, { x: 1, y: 3 }, { x: 2, y: 3 }] })
+it('builds a array into a array of pairs.', ()=> expect(index.buildArrayOfPairs([1, 2, 3])).toEqual([{ x: 1, y: 2 }, { x: 1, y: 3 }, { x: 2, y: 3 }]))
 
-console.log({
-    result: findPairsWithGivenSumArray({ givenSum: 10, array: [8, 7, 2, 5, 3, 1] }),
-    expected: [[8, 2], [7, 3]]
-})
-console.log({
-    result: findPairsWithGivenSumArray({ givenSum: 3, array: [1, 2, 3, 4, 5, 6] }),
-    expected: [[1, 2]]
-})
+it('find pairs with a given sum.', ()=> expect(index.findPairsWithGivenSumArray({ givenSum: 10, array: [8, 7, 2, 5, 3, 1] })).toEqual([[8, 2], [7, 3]]))
+it('find pairs with a given sum.', ()=> expect(index.findPairsWithGivenSumArray({ givenSum: 3, array: [1, 2, 3, 4, 5, 6] })).toEqual([[1, 2]]))
