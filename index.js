@@ -1,11 +1,11 @@
+const arrayUtils = require('./array-utils.js')
+const arrayFromIndex = arrayUtils.arrayFromIndex
+const arrayNotEmpty = arrayUtils.arrayNotEmpty
+const joinTwoArrays = arrayUtils.joinTwoArrays
+
 const sum = ({ x, y }) => x + y
 const isPairWithGivenSum = ({ pair, givenSum }) => sum(pair) === givenSum
 const getPairsWithGivenSum = (pairs, givenSum) => pairs.filter(pair => isPairWithGivenSum({ pair, givenSum }))
-
-// TODO: Colocar num arquivo de utilitários, talvez seja usado em outros lugares
-const arrayFromIndex = ({ array, index }) => array.slice(index);
-const joinTwoArrays = (array1, array2) => [...array1, ...array2]
-const arrayNotEmpty = array => array.length !== 0
 
 // Tentar remover o conceito de pairs ou então isolá-lo em uma classe
 const convertArrayToPairs = (x, array) => array.map(y => { return { x, y } })
@@ -29,9 +29,6 @@ module.exports = {
 	sum,
 	isPairWithGivenSum,
 	getPairsWithGivenSum,
-	arrayFromIndex,
-	joinTwoArrays,
-	arrayNotEmpty,
 	convertArrayToPairs,
 	convertPairsToArray,
 	buildArrayOfPairs,

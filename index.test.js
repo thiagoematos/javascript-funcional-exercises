@@ -11,16 +11,6 @@ it('gets pairs with a given sum', () => expect(index.getPairsWithGivenSum([{ x: 
 it('gets pairs with a given sum', () => expect(index.getPairsWithGivenSum([{ x: 8, y: 2 }], 10)).toEqual([{ x: 8, y: 2 }]))
 it('gets pairs with a given sum', () => expect(index.getPairsWithGivenSum([{ x: 0, y: 8 }, { x: 6, y: 2 }], 9)).toEqual([]))
 
-it('returns a new array from the index', () => expect(index.arrayFromIndex({ array: [1, 2, 3, 4], index: 1 })).toEqual([2, 3, 4]))
-it('returns a new array from the index', () => expect(index.arrayFromIndex({ array: [1, 2, 3, 4], index: 2 })).toEqual([3, 4]))
-
-it('joins two arrays', () => expect(index.joinTwoArrays([1, 2], [3, 4])).toEqual([1, 2, 3, 4]))
-it('joins two arrays', () => expect(index.joinTwoArrays([1], [2])).toEqual([1, 2]))
-it('joins two arrays', () => expect(index.joinTwoArrays([{ x: 1, y: 2 }], [{ x: 3, y: 4 }])).toEqual([{ x: 1, y: 2 }, { x: 3, y: 4 }]))
-
-it('checks if a array is empty', () => expect(index.arrayNotEmpty([])).toBeFalsy())
-it('checks if a array is empty', () => expect(index.arrayNotEmpty([1])).toBeTruthy())
-
 it('converts a number and a array to a pair', () => expect(index.convertArrayToPairs(1, [2, 3])).toEqual([{ x: 1, y: 2 }, { x: 1, y: 3 }]))
 it('converts a number and a array to a pair', () => expect(index.convertArrayToPairs(1, [2])).toEqual([{ x: 1, y: 2 }]))
 
