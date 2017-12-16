@@ -1,6 +1,6 @@
 // Factory Function
-const Treinador = (nome, pokemons) => { return { nome, pokemons } }
-const Pokemon = (nome, tipo) => { return { nome, tipo } }
+const Treinador = (nome, pokemons) => ({ nome, pokemons })
+const Pokemon = (nome, tipo) => ({ nome, tipo })
 
 const eletrico = 'Elétrico'
 const planta = 'Planta'
