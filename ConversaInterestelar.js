@@ -5,6 +5,9 @@ const Saudador =
 const Despedidor =
     () =>
         ({ despedir: pessoa => `Tchau! ${pessoa.nome}` })
+const Evoluidor =
+    nome =>
+        ({ evoluir: evolucaoFn => `${nome} evolui para ${evolucaoFn()}` })
 
 const Terraquio = nome => {
     const preposicao = 'na'
@@ -13,7 +16,8 @@ const Terraquio = nome => {
         {},
         { nome },
         Saudador(nome, preposicao, localDeNascimento),
-        Despedidor()
+        Despedidor(),
+        Evoluidor(nome)
     )
 }
 
@@ -24,7 +28,8 @@ const Kriptoniano = nome => {
         {},
         { nome },
         Saudador(nome, preposicao, localDeNascimento),
-        Despedidor()
+        Despedidor(),
+        Evoluidor(nome)
     )
 }
 
@@ -38,3 +43,7 @@ console.log(kalEl.saudar())
 
 console.log(joao.despedir(kalEl))
 console.log(kalEl.despedir(joao))
+
+// Functor
+console.log(joao.evoluir(() => 'X-Man'))
+console.log(kalEl.evoluir(() => 'Super-Man'))
