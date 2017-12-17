@@ -5,9 +5,9 @@ const Saudador =
 const Despedidor =
     () =>
         ({ despedir: pessoa => `Tchau! ${pessoa.nome}` })
-const Evoluidor =
+const Mutador =
     nome =>
-        ({ evoluir: evolucaoFn => `${nome} evolui para ${evolucaoFn()}` })
+        ({ fazerMutaçãoCom: elementoFn => `${nome} vira ${elementoFn()}` })
 
 const Terraquio = nome => {
     const preposicao = 'na'
@@ -17,7 +17,7 @@ const Terraquio = nome => {
         { nome },
         Saudador(nome, preposicao, localDeNascimento),
         Despedidor(),
-        Evoluidor(nome)
+        Mutador(nome)
     )
 }
 
@@ -29,21 +29,26 @@ const Kriptoniano = nome => {
         { nome },
         Saudador(nome, preposicao, localDeNascimento),
         Despedidor(),
-        Evoluidor(nome)
+        Mutador(nome)
     )
 }
 
-const joao = Terraquio('João')
+const peterParker = Terraquio('Peter Parker')
 const kalEl = Kriptoniano('Kal-El')
+const kimberly = Terraquio('Kimberly')
 
-console.log(joao.nome)
+console.log(peterParker.nome)
 
-console.log(joao.saudar())
+console.log(peterParker.saudar())
 console.log(kalEl.saudar())
 
-console.log(joao.despedir(kalEl))
-console.log(kalEl.despedir(joao))
+console.log(peterParker.despedir(kalEl))
+console.log(kalEl.despedir(peterParker))
 
-// Functor
-console.log(joao.evoluir(() => 'X-Man'))
-console.log(kalEl.evoluir(() => 'Super-Man'))
+// Functors
+const aranha = () => 'o Homem-Aranha'
+const sol = () => 'o Super-Man'
+const mofadorRosa = () => 'a Ranger Rosa'
+console.log(peterParker.fazerMutaçãoCom(aranha))
+console.log(kalEl.fazerMutaçãoCom(sol))
+console.log(kimberly.fazerMutaçãoCom(mofadorRosa))
