@@ -2,14 +2,17 @@
 const Treinador = (nome, pokemons) => ({ nome, pokemons })
 const Pokemon = (nome, tipo) => ({ nome, tipo })
 
-const eletrico = 'Elétrico'
-const planta = 'Planta'
-const psiquico = 'Psíquico'
+// Enum
+const Tipo = {
+    ELETRICO: 'Elétrico',
+    PLANTA: 'Planta',
+    PSIQUICO: 'Psíquico'
+}
 
 const treinadores = [
-    Treinador('Ash', [Pokemon('Pikachu', eletrico), Pokemon('Bulbassaur', planta)]),
-    Treinador('Misty', [Pokemon('Psyduck', psiquico)]),
-    Treinador('Brock', [Pokemon('Newtow', psiquico)])
+    Treinador('Ash', [Pokemon('Pikachu', Tipo.ELETRICO), Pokemon('Bulbassaur', Tipo.PLANTA)]),
+    Treinador('Misty', [Pokemon('Psyduck', Tipo.PSIQUICO)]),
+    Treinador('Brock', [Pokemon('Newtow', Tipo.PSIQUICO)])
 ]
 
 // Flat Map
@@ -21,5 +24,5 @@ console.log(pokemons)
 
 // Currying
 const porTipo = tipo => pokemon => tipo === pokemon.tipo
-const pokemonsPsiquicos = pokemons.filter(porTipo(psiquico))
+const pokemonsPsiquicos = pokemons.filter(porTipo(Tipo.PSIQUICO))
 console.log(pokemonsPsiquicos)
